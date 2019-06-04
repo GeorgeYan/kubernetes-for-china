@@ -77,6 +77,7 @@ $ rm -rf linux-amd64
 
 # 本地初始化，并将 `Tiller` 安装到 `Kubernetes` 集群
 $ kubectl create -f helm-rbac-config.yaml
+# helm init --service-account tiller --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.7.0 --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
 $ helm init --service-account tiller
 
 # 更新本地 charts repo
