@@ -68,30 +68,38 @@ $ kubectl taint nodes --all node-role.kubernetes.io/master-
 
 ## [Helm](https://github.com/kubernetes/helm)
 
+### 安装
+
+详细使用说明请参考 [`Helm`官方文档](https://v3.helm.sh/docs/)
 
 ```bash
-# 安装
-$ curl -s https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz | tar xzv
+# Linux 用户
+$ curl -s https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz | tar xzv
 $ sudo cp linux-amd64/helm /usr/local/bin
 $ rm -rf linux-amd64
 
-# 本地初始化，并将 `Tiller` 安装到 `Kubernetes` 集群
-$ kubectl create -f helm-rbac-config.yaml
-# helm init --service-account tiller --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.7.0 --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
-$ helm init --service-account tiller
+# Mac 用户
+$ curl -s https://get.helm.sh/helm-v3.2.1-darwin-amd64.tar.gz | tar xzv
+$ sudo cp darwin-amd64/helm /usr/local/bin
+$ rm -rf darwin-amd64
+```
+
+### 使用
+
+```bash
+# 使用 bitnami 提供的 charts 镜像
+$ helm repo bitnami https://charts.bitnami.com/bitnami
 
 # 更新本地 charts repo
 $ helm repo update
 
-# 测试安装 mysql chart
-$ helm install --name my-mysql stable/mysql
+# 测试安装 redis chart
+$ helm install my-redis bitnami/redis
 
 # 删除 mysql
-$ helm delete my-mysql
-
-# 删除并释放该部署名以便重用
-$ helm delete --purge my-mysql
+$ helm uninstall my-redis
 ```
+
 
 ## [Rook](https://github.com/rook/rook)
 
