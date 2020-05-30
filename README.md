@@ -88,7 +88,7 @@ $ rm -rf darwin-amd64
 
 ```bash
 # 使用 bitnami 提供的 charts 镜像
-$ helm repo bitnami https://charts.bitnami.com/bitnami
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
 
 # 更新本地 charts repo
 $ helm repo update
